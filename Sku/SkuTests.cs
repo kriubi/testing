@@ -20,7 +20,7 @@ public sealed class SkuTests
 
     [Theory]
     [InlineData("---------------")]
-    public void Create_Should_ReturnNull_WhenValueIsDashes(string? value)
+    public void Create_Should_ThrowArgumentException_WhenValueIsDashes(string? value)
     {
         Action act = () => Sku.Create(value);
 
