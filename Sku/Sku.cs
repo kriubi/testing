@@ -20,6 +20,11 @@ public record Sku
             return null;
         }
 
+        if (value.Equals("---------------"))
+        {
+            throw new ArgumentException(nameof(value));
+        }
+
         return new Sku(value);
     }
 }

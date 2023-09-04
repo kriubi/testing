@@ -19,6 +19,17 @@ public sealed class SkuTests
     }
 
     [Theory]
+    [InlineData("---------------")]
+    public void Create_Should_ReturnNull_WhenValueIsDashes(string? value)
+    {
+        Action act = () => Sku.Create(value);
+
+        act.Should()
+            .Throw<ArgumentException>()
+            .WithMessage(nameof(value));
+    }
+
+    [Theory]
     [InlineData("1")]
     [InlineData("12")]
     [InlineData("123")]
