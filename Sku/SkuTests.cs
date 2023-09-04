@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace testing.Sku;
 
 public sealed class SkuTests
@@ -9,7 +11,11 @@ public sealed class SkuTests
     public void Create_Should_ReturnNull_WhenValueIsNullOrWhiteSpace(string? value)
     {
         var sku = Sku.Create(value);
+
         Assert.Null(sku);
+
+        // FluentAssertions
+        sku.Should().BeNull();
     }
 
     [Theory]
@@ -30,7 +36,11 @@ public sealed class SkuTests
     public void Create_Should_ReturnNull_WhenValueLengthIsInvalid(string value)
     {
         var sku = Sku.Create(value);
+
         Assert.Null(sku);
+
+        // FluentAssertions
+        sku.Should().BeNull();
     }
 
     [Theory]
@@ -41,6 +51,10 @@ public sealed class SkuTests
 
         Assert.NotNull(sku);
         Assert.IsType<Sku>(sku);
+
+        // FluentAssertions
+        sku.Should().NotBeNull();
+        sku.Should().BeOfType<Sku>();
     }
 
     public class Skus : TheoryData<string>
